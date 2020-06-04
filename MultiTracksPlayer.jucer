@@ -3,7 +3,14 @@
 <JUCERPROJECT id="OQfBtY" name="MultiTracksPlayer" projectType="guiapp" jucerVersion="5.4.7">
   <MAINGROUP id="sV0nAy" name="MultiTracksPlayer">
     <GROUP id="{BBA788AE-667C-D563-6C4E-4CB2274B3264}" name="Source">
-      <FILE id="ZUKe2w" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="faG9wd" name="AudioDownload.cpp" compile="1" resource="0"
+            file="Source/AudioDownload.cpp"/>
+      <FILE id="DfzHui" name="AudioDownload.h" compile="1" resource="0" file="Source/AudioDownload.h"/>
+      <FILE id="LNUuWe" name="ReferenceCountedBuffer.cpp" compile="1" resource="0"
+            file="Source/ReferenceCountedBuffer.cpp"/>
+      <FILE id="KN00Cn" name="ReferenceCountedBuffer.h" compile="1" resource="0"
+            file="Source/ReferenceCountedBuffer.h"/>
+      <FILE id="ZUKe2w" name="MainComponent.h" compile="1" resource="0" file="Source/MainComponent.h"/>
       <FILE id="FWTxcg" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="XntHV5" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
