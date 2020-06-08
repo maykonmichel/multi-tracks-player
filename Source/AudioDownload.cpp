@@ -26,23 +26,18 @@ void AudioDownload::checkForPathToOpen() {
     pathToOpen.swapWith(chosenPath);
 
     if (pathToOpen.isNotEmpty()) {
-        File file(pathToOpen);
+        URL url(pathToOpen);
+        auto *file = url.createInputStream(false);
         std::unique_ptr<AudioFormatReader> reader(formatManager.createReaderFor(file));
 
         if (reader.get() != nullptr) {
-            auto duration = reader->lengthInSamples / reader->sampleRate;
+            ReferenceCountedBuffer::Ptr newBuffer = new ReferenceCountedBuffer("file.getFileName()",
+                                                                               (int) reader->numChannels,
+                                                                               (int) reader->lengthInSamples);
 
-            if (duration < 2) {
-                ReferenceCountedBuffer::Ptr newBuffer = new ReferenceCountedBuffer(file.getFileName(),
-                                                                                   (int) reader->numChannels,
-                                                                                   (int) reader->lengthInSamples);
-
-                reader->read(newBuffer->getAudioSampleBuffer(), 0, (int) reader->lengthInSamples, 0, true, true);
-                currentBuffer = newBuffer;
-                buffers.add(newBuffer);
-            } else {
-                // handle the error that the file is 2 seconds or longer..
-            }
+            reader->read(newBuffer->getAudioSampleBuffer(), 0, (int) reader->lengthInSamples, 0, true, true);
+            currentBuffer = newBuffer;
+            buffers.add(newBuffer);
         }
     }
 }

@@ -78,16 +78,8 @@ void MainComponent::resized() {
 }
 
 void MainComponent::openButtonClicked() {
-    FileChooser chooser("Select a Wave file shorter than 2 seconds to play...",
-                        {},
-                        "*.wav");
-
-    if (chooser.browseForFileToOpen()) {
-        auto file = chooser.getResult();
-        auto path = file.getFullPathName();
-        audioDownload.chosenPath.swapWith(path);
-        audioDownload.notify();
-    }
+    audioDownload.chosenPath = "https://kovver-rockinrio.s3-us-west-1.amazonaws.com/03338ee887b653d711b1afe96ac7186c.mp3";
+    audioDownload.notify();
 }
 
 void MainComponent::clearButtonClicked() {
